@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(/Users/ketanpandhi/Library/Python/3.9/bin/streamlit run *)"
+    ]
+  }
+}
