@@ -3,7 +3,7 @@ from openai import OpenAI
 
 st.set_page_config(page_title="KetanWeather", page_icon="🌤️", layout="centered")
 
-st.title("🌤️ KetanWeather")
+st.title("🌤️ KetsWeather")
 st.caption("AI-powered weather assistant")
 
 with st.sidebar:
