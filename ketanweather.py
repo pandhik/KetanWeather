@@ -1,5 +1,9 @@
+import os
 import streamlit as st
 from openai import OpenAI
+from dotenv import load_dotenv
+
+load_dotenv()
 
 st.set_page_config(page_title="KetanWeather", page_icon="🌤️", layout="centered")
 
@@ -8,14 +12,14 @@ st.caption("AI-powered weather assistant")
 
 with st.sidebar:
     st.header("Configuration")
-    api_key = st.text_input("API Key", type="password", value="sk-...")
-    base_url = st.text_input("Base URL", value="https://api.openai.com/v1")
+    api_key = st.text_input("API Key", type="password", value=os.getenv("API_KEY", ""))
+    base_url = st.text_input("Base URL", value=os.getenv("BASE_URL", "https://api.openai.com/v1"))
     model = st.text_input("Model", value="gpt-4o-mini")
 
 city = st.text_input("Enter city name", placeholder="e.g. Mumbai, New York, London")
 
 if st.button("Get Weather", type="primary", disabled=not city.strip()):
-    if not api_key or api_key == "sk-...":
+    if not api_key:
         st.error("Please enter your API key in the sidebar.")
     else:
         with st.spinner(f"Fetching weather for {city}..."):
